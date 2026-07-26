@@ -1,0 +1,7 @@
+{
+  "uuid": "auto-new-workspace@maounour",
+  "name": "Auto New Workspace",
+  "description": "Move every new window to an empty workspace.",
+  "shell-version": ["50"],
+  "version": 1
+}
