@@ -1,7 +1,9 @@
 {
   "uuid": "auto-new-workspace@maounour",
   "name": "Auto New Workspace",
-  "description": "Move every new window to an empty workspace.",
+  "description": "Rule-based automatic workspace manager: static/dynamic workspaces, app groups, filtering. Default: move each new window to an empty workspace.",
   "shell-version": ["50"],
-  "version": 1
+  "settings-schema": "org.gnome.shell.extensions.auto-new-workspace",
+  "version": 2,
+  "version-name": "2.0.0"
 }

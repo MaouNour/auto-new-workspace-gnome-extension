@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.auto-new-workspace"
+          path="/org/gnome/shell/extensions/auto-new-workspace/">
+    <key name="config-json" type="s">
+      <default>"{}"</default>
+      <summary>Rule configuration (JSON)</summary>
+      <description>Sparse JSON; anything missing uses built-in defaults. See PRINCIPLES.md.</description>
+    </key>
+    <key name="debug" type="b">
+      <default>false</default>
+      <summary>Debug logging</summary>
+      <description>Log matched rule, target workspace and reason for each window.</description>
+    </key>
+  </schema>
+</schemalist>
