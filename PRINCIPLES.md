@@ -79,3 +79,24 @@ Exclusions run **before** rules and are not overridable by them: window types (d
 ## 7. Safety
 
 Invalid JSON/enums/regexes are reported and replaced by defaults or skipped per entry. Unknown keys are preserved, so later versions can add options without migrations (`version` field reserved).
+
+## 8. Preferences UI (JSON-backed)
+
+The JSON in GSettings (`config-json`) is the **single source of truth**; the UI generates it and loads from it.
+
+```
+prefs.js            window + tab wiring
+ui/store.js         read JSON → edit a fresh copy → write back (unknown keys preserved)
+ui/fields.js        form rows, matcher-list editor, range editor
+ui/page.js          rebuildable pages, expanders that remember open/closed state
+ui/general.js       General (table-driven options) + Filtering (lists, precedence order)
+ui/collections.js   Workspaces / Applications / Groups / Rules
+ui/json.js          live JSON view, Apply, Import/Export/Reset, validator output
+```
+
+- Tabs: **General · Workspaces · Applications · Groups · Rules · Filtering · JSON**.
+- Widget edits write immediately and do **not** rebuild other widgets (typing/focus is never disturbed). Text fields commit on Enter/✓, so the extension doesn't reload on every keystroke.
+- Structural changes (add / delete / rename / reorder / type change) and external edits (JSON tab, import, reset, dconf) rebuild the tabs from the JSON, deferred to idle.
+- Renaming or deleting a group or workspace rewrites every reference to it (`@group`, `workspaces.*.groups`, `workspace:` in apps/rules).
+- Matcher editor: one row per matcher (field · method · pattern); regexes and unknown groups are flagged red. It round-trips to the compact JSON forms (`"firefox"`, `"class:Foo"`, `"@dev"`, `{pattern, mode, …}`); entries it doesn't understand are preserved untouched.
+- Invalid JSON: tabs show a notice instead of editing; the JSON tab shows the parse error.
