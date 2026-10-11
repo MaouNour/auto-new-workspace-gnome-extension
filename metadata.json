@@ -2,9 +2,12 @@
   "uuid": "auto-new-workspace@maounour",
   "name": "Auto New Workspace",
   "description": "Rule-based automatic workspace manager: static/dynamic workspaces, app groups, filtering. Default: move each new window to an empty workspace.",
-  "shell-version": ["50","51"],
+  "shell-version": ["50", "51"],
   "settings-schema": "org.gnome.shell.extensions.auto-new-workspace",
   "version": 2,
   "url": "https://github.com/MaouNour/auto-new-workspace-gnome-extension",
-  "version-name": "2.0.0"
+  "version-name": "2.0.0",
+  "donations": {
+    "custom": ["https://app.paymento.io/payment-link/8240031082a34883be8866108e71eec0"]
+  }
 }
